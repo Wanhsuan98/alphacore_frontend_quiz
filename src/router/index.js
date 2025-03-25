@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '../views/LoginPage.vue'
 import OrderListPage from '../views/OrderListPage.vue'
+import { getAuthToken } from '../boot/axios';
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -8,7 +9,7 @@ const routes = [
   { 
     path: '/orders', 
     component: OrderListPage,
-    meta: { requiresAuth: true } // 需要登入才能訪問
+    meta: { requiresAuth: true } 
   }
 ]
 
@@ -18,7 +19,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem('token') // 假設 token 儲存在 localStorage
+  const isAuthenticated = !!getAuthToken();
   if (to.meta.requiresAuth && !isAuthenticated) {
     next('/login')
   } else {
