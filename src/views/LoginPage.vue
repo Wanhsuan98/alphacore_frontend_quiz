@@ -44,7 +44,7 @@ export default {
           throw new Error('未收到 token，請檢查 API 回應');
         }
 
-        // 將 token 儲存到記憶體中
+        // store token
         setAuthToken(token);
         router.push('/orders');
       } catch (error) {
