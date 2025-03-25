@@ -5,10 +5,10 @@ const api = axios.create({
   baseURL: 'https://dev.tapgo.cc/test', 
 });
 
-// 儲存 token 的記憶體變數
+// Store token variable
 let authToken = null;
 
-// 設置 token 的方法
+// Set token
 export const setAuthToken = (token) => {
   authToken = token;
 };
@@ -17,12 +17,12 @@ export const getAuthToken = () => {
     return authToken;
   };
 
-// 清除 token 的方法
+// Clear token
 export const clearAuthToken = () => {
   authToken = null;
 };
 
-// set interceptors and headers
+// Set interceptors and headers
 api.interceptors.request.use(
     (config) => {
       if (authToken) {
