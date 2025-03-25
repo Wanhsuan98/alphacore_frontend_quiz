@@ -6,7 +6,7 @@ import 'quasar/src/css/index.sass'
 import router from './router'
 
 const app = createApp(App)
-app.use(router)
+app.use(router),
 app.use(Quasar, {
   plugins: {}
 })
